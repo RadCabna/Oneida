@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct Buttons: View {
+    var size = 0.05
+    var text = "START"
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image("menuButton")
+            .resizable()
+            .scaledToFit()
+            .frame(height: screenWidth*size)
+            .overlay(
+                Text(text)
+                    .font(Font.custom("TitanOne", size: screenWidth*size*0.45))
+                    .foregroundColor(.white)
+                    .padding(.bottom, screenWidth*size*0.05)
+            )
     }
 }
 

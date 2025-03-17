@@ -7,19 +7,44 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DD93928F2D87051D00A3786D /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD93928E2D87051D00A3786D /* Game.swift */; };
+		DDA0C0B72D80AFC200334F50 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0C0B62D80AFC200334F50 /* Settings.swift */; };
+		DDA0C0B92D80B7E600334F50 /* Shop.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0C0B82D80B7E600334F50 /* Shop.swift */; };
+		DDA0C0BB2D80BB8A00334F50 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDA0C0BA2D80BB8A00334F50 /* Model.swift */; };
+		DDD616342D8718A1002723AA /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD616332D8718A1002723AA /* VisitorView.swift */; };
 		DDDEF7572D806F1200292000 /* Oneida_OnlineApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF7562D806F1200292000 /* Oneida_OnlineApp.swift */; };
-		DDDEF7592D806F1200292000 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF7582D806F1200292000 /* ContentView.swift */; };
 		DDDEF75B2D806F1300292000 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDDEF75A2D806F1300292000 /* Assets.xcassets */; };
 		DDDEF75F2D806F1300292000 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDDEF75E2D806F1300292000 /* Preview Assets.xcassets */; };
+		DDDEF76D2D806F9200292000 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF76C2D806F9200292000 /* Coordinator.swift */; };
+		DDDEF76F2D806FB500292000 /* Loading.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF76E2D806FB500292000 /* Loading.swift */; };
+		DDDEF7712D806FBF00292000 /* MainMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF7702D806FBF00292000 /* MainMenu.swift */; };
+		DDDEF7732D806FD900292000 /* SizeExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF7722D806FD900292000 /* SizeExtention.swift */; };
+		DDDEF7752D806FE800292000 /* ColorExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF7742D806FE800292000 /* ColorExtention.swift */; };
+		DDDEF7772D80701200292000 /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF7762D80701200292000 /* Background.swift */; };
+		DDDEF7792D807FE600292000 /* TitanOne-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDDEF7782D807FE600292000 /* TitanOne-Regular.ttf */; };
+		DDDEF77C2D8098FF00292000 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDDEF77B2D8098FF00292000 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DD93928E2D87051D00A3786D /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		DDA0C0B62D80AFC200334F50 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		DDA0C0B82D80B7E600334F50 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
+		DDA0C0BA2D80BB8A00334F50 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		DDD616332D8718A1002723AA /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		DDDEF7532D806F1200292000 /* Oneida Online.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oneida Online.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDDEF7562D806F1200292000 /* Oneida_OnlineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oneida_OnlineApp.swift; sourceTree = "<group>"; };
-		DDDEF7582D806F1200292000 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DDDEF75A2D806F1300292000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDDEF75C2D806F1300292000 /* Oneida_Online.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneida_Online.entitlements; sourceTree = "<group>"; };
 		DDDEF75E2D806F1300292000 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		DDDEF76C2D806F9200292000 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		DDDEF76E2D806FB500292000 /* Loading.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loading.swift; sourceTree = "<group>"; };
+		DDDEF7702D806FBF00292000 /* MainMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenu.swift; sourceTree = "<group>"; };
+		DDDEF7722D806FD900292000 /* SizeExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SizeExtention.swift; sourceTree = "<group>"; };
+		DDDEF7742D806FE800292000 /* ColorExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtention.swift; sourceTree = "<group>"; };
+		DDDEF7762D80701200292000 /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
+		DDDEF7782D807FE600292000 /* TitanOne-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TitanOne-Regular.ttf"; sourceTree = "<group>"; };
+		DDDEF77A2D807FFC00292000 /* Oneida-Online-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Oneida-Online-Info.plist"; sourceTree = SOURCE_ROOT; };
+		DDDEF77B2D8098FF00292000 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,8 +77,15 @@
 		DDDEF7552D806F1200292000 /* Oneida Online */ = {
 			isa = PBXGroup;
 			children = (
+				DDDEF77A2D807FFC00292000 /* Oneida-Online-Info.plist */,
 				DDDEF7562D806F1200292000 /* Oneida_OnlineApp.swift */,
-				DDDEF7582D806F1200292000 /* ContentView.swift */,
+				DDDEF76B2D806F7B00292000 /* Views */,
+				DDDEF76A2D806F7400292000 /* SubViews */,
+				DDDEF7692D806F6B00292000 /* Extentions */,
+				DDDEF7682D806F6300292000 /* Coordintator */,
+				DDDEF7672D806F5D00292000 /* Models */,
+				DDDEF7662D806F5400292000 /* Sounds */,
+				DDDEF7652D806F4E00292000 /* Fonts */,
 				DDDEF75A2D806F1300292000 /* Assets.xcassets */,
 				DDDEF75C2D806F1300292000 /* Oneida_Online.entitlements */,
 				DDDEF75D2D806F1300292000 /* Preview Content */,
@@ -67,6 +99,68 @@
 				DDDEF75E2D806F1300292000 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		DDDEF7652D806F4E00292000 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				DDDEF7782D807FE600292000 /* TitanOne-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		DDDEF7662D806F5400292000 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		DDDEF7672D806F5D00292000 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				DDA0C0BA2D80BB8A00334F50 /* Model.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		DDDEF7682D806F6300292000 /* Coordintator */ = {
+			isa = PBXGroup;
+			children = (
+				DDDEF76C2D806F9200292000 /* Coordinator.swift */,
+			);
+			path = Coordintator;
+			sourceTree = "<group>";
+		};
+		DDDEF7692D806F6B00292000 /* Extentions */ = {
+			isa = PBXGroup;
+			children = (
+				DDDEF7722D806FD900292000 /* SizeExtention.swift */,
+				DDDEF7742D806FE800292000 /* ColorExtention.swift */,
+			);
+			path = Extentions;
+			sourceTree = "<group>";
+		};
+		DDDEF76A2D806F7400292000 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				DDDEF7762D80701200292000 /* Background.swift */,
+				DDDEF77B2D8098FF00292000 /* Buttons.swift */,
+				DDA0C0B62D80AFC200334F50 /* Settings.swift */,
+				DDA0C0B82D80B7E600334F50 /* Shop.swift */,
+				DDD616332D8718A1002723AA /* VisitorView.swift */,
+			);
+			path = SubViews;
+			sourceTree = "<group>";
+		};
+		DDDEF76B2D806F7B00292000 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DDDEF76E2D806FB500292000 /* Loading.swift */,
+				DDDEF7702D806FBF00292000 /* MainMenu.swift */,
+				DD93928E2D87051D00A3786D /* Game.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -128,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DDDEF75F2D806F1300292000 /* Preview Assets.xcassets in Resources */,
+				DDDEF7792D807FE600292000 /* TitanOne-Regular.ttf in Resources */,
 				DDDEF75B2D806F1300292000 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -139,8 +234,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDDEF7592D806F1200292000 /* ContentView.swift in Sources */,
+				DDDEF7752D806FE800292000 /* ColorExtention.swift in Sources */,
+				DDDEF7772D80701200292000 /* Background.swift in Sources */,
+				DDDEF76D2D806F9200292000 /* Coordinator.swift in Sources */,
+				DDA0C0B92D80B7E600334F50 /* Shop.swift in Sources */,
+				DDDEF7732D806FD900292000 /* SizeExtention.swift in Sources */,
+				DDDEF76F2D806FB500292000 /* Loading.swift in Sources */,
 				DDDEF7572D806F1200292000 /* Oneida_OnlineApp.swift in Sources */,
+				DDD616342D8718A1002723AA /* VisitorView.swift in Sources */,
+				DD93928F2D87051D00A3786D /* Game.swift in Sources */,
+				DDA0C0B72D80AFC200334F50 /* Settings.swift in Sources */,
+				DDA0C0BB2D80BB8A00334F50 /* Model.swift in Sources */,
+				DDDEF7712D806FBF00292000 /* MainMenu.swift in Sources */,
+				DDDEF77C2D8098FF00292000 /* Buttons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +380,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Oneida-Online-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -282,9 +389,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
@@ -292,7 +398,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "f1.Oneida-Online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -312,6 +419,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Oneida-Online-Info.plist";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -320,9 +428,8 @@
 				"INFOPLIST_KEY_UILaunchScreen_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphoneos*]" = UIStatusBarStyleDefault;
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
@@ -330,7 +437,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "f1.Oneida-Online";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
