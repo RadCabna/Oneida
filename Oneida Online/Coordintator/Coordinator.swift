@@ -11,11 +11,7 @@ import SwiftUI
 enum CoordinatorView: Equatable {
     case loading
     case main
-//    case settings
-//    case guidebook
-//    case shop
-//    case game
-//    case trophy
+    case game
 }
 
 final class Coordinator: ObservableObject {
@@ -28,16 +24,8 @@ final class Coordinator: ObservableObject {
             view = AnyView(Loading())
         case .main:
             view = AnyView(MainMenu())
-//        case .settings:
-//            view = AnyView(Settings())
-//        case .guidebook:
-//            view = AnyView(Guidebook())
-//        case .shop:
-//            view = AnyView(Shop())
-//        case .game:
-//            view = AnyView(Game())
-//        case .trophy:
-//            view = AnyView(TrophyRoom())
+        case .game:
+            view = AnyView(Game())
         }
         return view
     }

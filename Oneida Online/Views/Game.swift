@@ -8,13 +8,20 @@
 import SwiftUI
 
 struct Game: View {
+    @EnvironmentObject var coordinator: Coordinator
     @AppStorage("coinCount") var coinCount = 0
+    @AppStorage("music") var music = true
     @State private var showPause = false
     @State private var shopItemsData = UserDefaults.standard.array(forKey: "shopItemsData") as? [Int] ?? [0,0,0,0,0,0,0,0]
     @State private var kitchenData = UserDefaults.standard.array(forKey: "kitchenData") as? [Int] ?? [1,1]
+    @State private var selectedKitchen = 0
+    @State private var kitchenArray = Arrays.kitchenArray
     @State private var cleaningData = UserDefaults.standard.array(forKey: "cleaningData") as? [Int] ?? [1,1]
+    @State private var selectedCleaning = 0
+    @State private var cleaningArray = Arrays.cleaningArray
     @State private var visitorsArray = Arrays.visitorsArray
-    @State private var randomeVisitor = Visitor(visitorImage: "visitor1", visitorDecireImage: "desire3")
+    @State private var randomeVisitor = Visitor(visitorImage: "visitor1", visitorDecireImage: "desire3", visitorReward: 5)
+    @State private var comeOutVisitor = Visitor(visitorImage: "visitor1", visitorDecireImage: "desire3", visitorReward: 5)
     @State private var keysArray = Arrays.keysArray
     @State private var keysData = UserDefaults.standard.array(forKey: "keysData") as? [Int] ?? [1,1,1,1,1,1,1,1,1,1,1,1]
     @State private var visitorsIndexInRoomData = UserDefaults.standard.array(forKey: "visitorsIndexInRoomData") as? [Int] ?? [1,1,1,1,1,1,1,1,1,1,1,1]
@@ -29,7 +36,11 @@ struct Game: View {
     @State private var comeOutVisitorOpacity: CGFloat = 0
     @State private var selectedKeyIndex = 20
     @State private var keySelected = false
+    @State private var kitchenSelected = false
+    @State private var cleaningSelected = false
     @State private var guestIndexInRoom = 0
+    @State private var visitorComeOutIndex = 0
+    @State private var shadowOpacity: CGFloat = 0
     var body: some View {
         ZStack {
             Background()
@@ -40,11 +51,13 @@ struct Game: View {
                     .frame(height: screenWidth*0.05)
                     .onTapGesture {
                         showPause.toggle()
-                        UserDefaults.standard.removeObject(forKey: "shopItemsData")
-                        UserDefaults.standard.removeObject(forKey: "kitchenData")
-                        UserDefaults.standard.removeObject(forKey: "cleaningData")
-                        UserDefaults.standard.removeObject(forKey: "keysData")
-                        UserDefaults.standard.removeObject(forKey: "keysTimeData")
+//                        UserDefaults.standard.removeObject(forKey: "shopItemsData")
+//                        UserDefaults.standard.removeObject(forKey: "kitchenData")
+//                        UserDefaults.standard.removeObject(forKey: "cleaningData")
+//                        UserDefaults.standard.removeObject(forKey: "keysData")
+//                        UserDefaults.standard.removeObject(forKey: "keysTimeData")
+//                        keysTimeData = [20,20,20,20,20,20,20,20,20,20,20,20]
+//                        UserDefaults.standard.setValue(keysTimeData, forKey: "keysTimeData")
                     }
                 Spacer()
                 Image("coinIcon")
@@ -80,6 +93,8 @@ struct Game: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(height: screenWidth*0.05)
+                                        .shadow(color: .white, radius: kitchenArray[item].isSelected ? 4 : 0)
+                                        .shadow(color: .white, radius: kitchenArray[item].isSelected ? 4 : 0)
                                         .overlay(
                                             VStack(spacing: screenWidth*0.004) {
                                                 Circle()
@@ -91,11 +106,15 @@ struct Game: View {
                                                     .frame(height: screenWidth*0.03)
                                             }
                                         )
+                                        .onTapGesture {
+                                            tapOnKitchen(item: item)
+                                        }
                                 }
                             }
                         }
                     )
-                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
+                    .offset(y: -screenWidth*0.08)
+//                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
                 Spacer()
                     .frame(width: screenWidth*0.5)
                 Image("serviceFrame")
@@ -114,6 +133,8 @@ struct Game: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(height: screenWidth*0.05)
+                                        .shadow(color: .white, radius: cleaningArray[item].isSelected ? 4 : 0)
+                                        .shadow(color: .white, radius: cleaningArray[item].isSelected ? 4 : 0)
                                         .overlay(
                                             VStack(spacing: screenWidth*0.004) {
                                                 Circle()
@@ -125,11 +146,15 @@ struct Game: View {
                                                     .frame(height: screenWidth*0.03)
                                             }
                                         )
+                                        .onTapGesture {
+                                            tapOnCleaning(item: item)
+                                        }
                                 }
                             }
                         }
                     )
-                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
+                    .offset(y: -screenWidth*0.08)
+//                    .scaleEffect(x: screenWidth/932, y: screenWidth/932)
             }
             HStack(spacing: screenWidth*0.04) {
                 VStack {
@@ -152,11 +177,11 @@ struct Game: View {
                                                 .frame(height: screenWidth*0.008)
                                                 .foregroundColor(whatStatusRoom(item: item))
                                             if keysData[item] == 1 {
-                                                Image("key")
+                                                Image("key1")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(height: screenWidth*0.025)
-                                            } else {
+                                            } else if keysData[item] != 4{
                                                 Text("\(keysTimeData[item])")
                                                     .font(Font.custom("TitanOne", size: screenWidth*0.015))
                                                     .foregroundColor(.white)
@@ -166,6 +191,7 @@ struct Game: View {
                                     )
                                     .onTapGesture {
                                         tapOnKey(item: item)
+                                        makeService(item: item)
                                     }
                             }
                         }
@@ -189,11 +215,11 @@ struct Game: View {
                                                 .frame(height: screenWidth*0.008)
                                                 .foregroundColor(whatStatusRoom(item: item))
                                             if keysData[item] == 1 {
-                                                Image("key")
+                                                Image("key1")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(height: screenWidth*0.025)
-                                            } else {
+                                            } else if keysData[item] != 4{
                                                 Text("\(keysTimeData[item])")
                                                     .font(Font.custom("TitanOne", size: screenWidth*0.018))
                                                     .foregroundColor(.white)
@@ -203,6 +229,7 @@ struct Game: View {
                                     )
                                     .onTapGesture {
                                         tapOnKey(item: item)
+                                        makeService(item: item)
                                     }
                             }
                         }
@@ -228,11 +255,11 @@ struct Game: View {
                                                 .frame(height: screenWidth*0.008)
                                                 .foregroundColor(whatStatusRoom(item: item))
                                             if keysData[item] == 1 {
-                                                Image("key")
+                                                Image("key1")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(height: screenWidth*0.025)
-                                            } else {
+                                            } else if keysData[item] != 4{
                                                 Text("\(keysTimeData[item])")
                                                     .font(Font.custom("TitanOne", size: screenWidth*0.015))
                                                     .foregroundColor(.white)
@@ -242,6 +269,7 @@ struct Game: View {
                                     )
                                     .onTapGesture {
                                         tapOnKey(item: item)
+                                        makeService(item: item)
                                     }
                             }
                         }
@@ -265,11 +293,11 @@ struct Game: View {
                                                 .frame(height: screenWidth*0.008)
                                                 .foregroundColor(whatStatusRoom(item: item))
                                             if keysData[item] == 1 {
-                                                Image("key")
+                                                Image("key1")
                                                     .resizable()
                                                     .scaledToFit()
                                                     .frame(height: screenWidth*0.025)
-                                            } else {
+                                            } else if keysData[item] != 4{
                                                 Text("\(keysTimeData[item])")
                                                     .font(Font.custom("TitanOne", size: screenWidth*0.018))
                                                     .foregroundColor(.white)
@@ -279,6 +307,7 @@ struct Game: View {
                                     )
                                     .onTapGesture {
                                         tapOnKey(item: item)
+                                        makeService(item: item)
                                     }
                             }
                         }
@@ -364,11 +393,25 @@ struct Game: View {
                     }
             }
             if visitorComeOut {
-                VisitorView()
+                VisitorView(visitorImage: comeOutVisitor.visitorImage,
+                            visitorDesire: comeOutVisitor.visitorDecireImage,
+                            desireActive: false,
+                            patienceActive: false,
+                            visitorReward: comeOutVisitor.visitorReward
+                            )
                     .opacity(comeOutVisitorOpacity)
                     .offset(x: screenWidth*0.2, y: screenWidth*0.15)
                     .scaleEffect(x: screenWidth/932, y: screenWidth/932)
             }
+            
+            Color.black.ignoresSafeArea().opacity(shadowOpacity)
+            if showPause {
+                PauseView(showPause: $showPause)
+            }
+        }
+        
+        .onChange(of: showPause) { _ in
+            aanimateShadow()
         }
         
         .onChange(of: visitorComeIn) { _ in
@@ -390,8 +433,20 @@ struct Game: View {
             }
         }
         
+        .onChange(of: showPause) { _ in
+            if showPause {
+                stopRoomTimer()
+                stopCheckVisitorsTimer()
+                stopVisitorComeInTimer()
+            } else {
+                startCheckVisitorsTimer()
+                startVisitorComeInTimer()
+                startRoomTimer()
+            }
+        }
+        
         .onAppear {
-            randomeVisitor = visitorsArray.randomElement() ?? Visitor(visitorImage: "visitor1", visitorDecireImage: "desire3")
+            randomeVisitor = visitorsArray.randomElement() ?? Visitor(visitorImage: "visitor1", visitorDecireImage: "desire3", visitorReward: 5)
             guestIndexInRoom = visitorsArray.firstIndex(where: {$0 == randomeVisitor}) ?? 0
             startCheckVisitorsTimer()
             startVisitorComeInTimer()
@@ -399,6 +454,26 @@ struct Game: View {
             startRoomTimer()
         }
         
+        .onDisappear {
+            stopRoomTimer()
+            stopCheckVisitorsTimer()
+            stopVisitorComeInTimer()
+        }
+        
+    }
+    
+    func aanimateShadow() {
+        if showPause {
+            shadowOpacity = 0
+            withAnimation(Animation.easeInOut(duration: 0.5)) {
+                shadowOpacity = 0.5
+            }
+        } else {
+            shadowOpacity = 0.5
+            withAnimation(Animation.easeInOut(duration: 0.5)) {
+                shadowOpacity = 0
+            }
+        }
     }
     
     func keyTheGuest() {
@@ -410,19 +485,104 @@ struct Game: View {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                     visitorComeIn = false
                 }
-                keysData[selectedKeyIndex] = 2
+                keysData[selectedKeyIndex] = .random(in: 2...3)
+                if keysData[selectedKeyIndex] == 3 && music {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        SoundManager.instance.playSound(sound: "kitchenSound")
+                    }
+                }
                 visitorsIndexInRoomData[selectedKeyIndex] = guestIndexInRoom
                 UserDefaults.standard.setValue(keysData, forKey: "keysData")
                 keySelected = false
                 withAnimation(Animation.easeInOut(duration: 0.7)) {
                     comeInVisitorOpacity = 0
                 }
-                
+                for i in 0..<keysArray.count {
+                    keysArray[i].isChosen = false
+                }
+                visitorsIndexInRoomData[selectedKeyIndex] = guestIndexInRoom
+                UserDefaults.standard.setValue(visitorsIndexInRoomData, forKey: "visitorsIndexInRoomData")
+                if music {
+                    SoundManager.instance.playSound(sound: "keySound")
+                }
             } else {
-                randomeVisitor.visitorPatience -= 2
+                visitorPatienceLevel -= 5
             }
            resetVisitorPatience()
             
+        }
+    }
+    
+    func makeService(item: Int) {
+        if kitchenSelected && keysData[item] == 3 {
+            let kitchenInWorkIndex = selectedKitchen
+            kitchenSelected = false
+            for i in 0..<kitchenArray.count {
+                kitchenArray[i].isSelected = false
+            }
+            if music {
+                SoundManager.instance.playSound(sound: "kitchenDoneSound")
+            }
+            keysData[item] = 2
+            kitchenData[selectedKitchen] = 2
+            coinCount += 3
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                kitchenData[kitchenInWorkIndex] = 1
+            }
+        }
+        if cleaningSelected && keysData[item] == 4 {
+            let cleaningInWorkIndex = selectedCleaning
+            cleaningSelected = false
+            for i in 0..<cleaningArray.count {
+                cleaningArray[i].isSelected = false
+            }
+            if music {
+                SoundManager.instance.playSound(sound: "cleanSound")
+            }
+            keysData[item] = 1
+            cleaningData[selectedCleaning] = 2
+            keysTimeData[item] = 20
+            coinCount -= 3
+            UserDefaults.standard.setValue(keysTimeData, forKey: "keysTimeData")
+            DispatchQueue.main.asyncAfter(deadline: .now() + 7) {
+                cleaningData[cleaningInWorkIndex] = 1
+            }
+        }
+    }
+    
+    func tapOnKitchen(item: Int) {
+        if kitchenData[item] == 1 {
+            for i in 0..<kitchenData.count {
+                kitchenArray[i].isSelected = false
+                cleaningArray[i].isSelected = false
+            }
+            selectedKitchen = item
+            kitchenArray[item].isSelected = true
+            cleaningSelected = false
+            kitchenSelected = true
+        }
+    }
+    
+    func tapOnCleaning(item: Int) {
+        if cleaningData[item] == 1 {
+            for i in 0..<cleaningData.count {
+                cleaningArray[i].isSelected = false
+                kitchenArray[i].isSelected = false
+            }
+            selectedCleaning = item
+            cleaningArray[item].isSelected = true
+            cleaningSelected = true
+            kitchenSelected = false
+        }
+    }
+    
+    
+    
+    func visitorsLeaveHisRoom() {
+        for i in 0..<keysTimeData.count {
+            if keysTimeData[i] == 0 {
+                
+            }
         }
     }
     
@@ -442,11 +602,11 @@ struct Game: View {
         case 1:
            return .green
         case 2:
-            return .red
+            return .yellow
         case 3:
             return .blue
         case 4:
-            return .yellow
+            return .red
         default:
             return .green
         }
@@ -483,6 +643,29 @@ struct Game: View {
         }
     }
     
+    func checkVisitorsComeOut() {
+        for i in 0..<keysTimeData.count {
+            if keysTimeData[i] == 0 && (keysData[i] == 2 || keysData[i] == 3) {
+                visitorComeOutIndex = visitorsIndexInRoomData[i]
+                comeOutVisitor = visitorsArray[visitorComeOutIndex]
+                visitorComeOut = true
+                coinCount += comeOutVisitor.visitorReward
+                keysData[i] = 4
+                keysTimeData[i] = 20
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                    withAnimation(Animation.easeInOut(duration: 0.7)) {
+                        comeOutVisitorOpacity = 0
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    visitorComeOut = false
+                }
+                break
+            }
+        }
+        UserDefaults.standard.setValue(keysData, forKey: "keysData")
+    }
+    
     func startRoomTimer() {
         visitorsInRoomTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(1), repeats: true) { _ in
             for i in 0..<keysTimeData.count {
@@ -490,19 +673,21 @@ struct Game: View {
                     keysTimeData[i] -= 1
                 }
             }
+            UserDefaults.standard.setValue(keysTimeData, forKey: "keysTimeData")
         }
     }
     
     func stopRoomTimer() {
-        timerVisitorComeIn?.invalidate()
-        timerVisitorComeIn = nil
+        visitorsInRoomTimer?.invalidate()
+        visitorsInRoomTimer = nil
         UserDefaults.standard.setValue(keysTimeData, forKey: "keysTimeData")
     }
     
     func startCheckVisitorsTimer() {
-        checkVisitorsTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(3), repeats: true) { _ in
-            if !visitorComeIn && !visitorComeOut {
-                randomeVisitor = visitorsArray.randomElement() ?? Visitor(visitorImage: "visitor1", visitorDecireImage: "desire3")
+        checkVisitorsTimer = Timer.scheduledTimer(withTimeInterval: TimeInterval(5), repeats: true) { _ in
+            checkVisitorsComeOut()
+            if !visitorComeIn {
+                randomeVisitor = visitorsArray.randomElement() ?? Visitor(visitorImage: "visitor1", visitorDecireImage: "desire3", visitorReward: 5)
                 guestIndexInRoom = visitorsArray.firstIndex(where: {$0 == randomeVisitor}) ?? 0
                 visitorComeIn = true
             }

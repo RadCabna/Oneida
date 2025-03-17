@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Settings: View {
     @AppStorage("music") var music = true
+    @State private var showRules = false
     @Binding var showSettings: Bool
     var body: some View {
         ZStack {
@@ -32,7 +33,7 @@ struct Settings: View {
                         Text("SETTINGS")
                             .font(Font.custom("TitanOne", size: screenWidth*0.045))
                             .foregroundColor(.white)
-                        Text("MUSIC")
+                        Text("SOUND")
                             .font(Font.custom("TitanOne", size: screenWidth*0.03))
                             .foregroundColor(.white)
                         ZStack {
@@ -51,9 +52,15 @@ struct Settings: View {
                             .offset(x: -screenWidth*0.006)
                         }
                         Buttons(size: 0.07, text: "RULES")
+                            .onTapGesture {
+                                showRules = true
+                            }
                     }
                 )
                 .offset(y: screenWidth*0.025)
+            if showRules {
+                Rules(showRules: $showRules)
+            }
         }
     }
 }

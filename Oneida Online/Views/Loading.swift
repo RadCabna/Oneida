@@ -9,6 +9,8 @@ import SwiftUI
 
 struct Loading: View {
     @EnvironmentObject var coordinator: Coordinator
+    @AppStorage("levelInfo") var level = false
+    @State private var loadingOpacity: CGFloat = 0
     var body: some View {
         ZStack {
             Background()
@@ -23,6 +25,7 @@ struct Loading: View {
                             .foregroundColor(.white)
                             .frame(maxHeight: .infinity, alignment: .bottom)
                             .padding(.bottom)
+                            .opacity(loadingOpacity)
                     }
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 } else {
@@ -33,12 +36,35 @@ struct Loading: View {
                             .rotationEffect(Angle(degrees: -90))
                             .frame(maxWidth: .infinity, alignment: .trailing)
                             .padding(.bottom)
+                            .opacity(loadingOpacity)
                     }
                     .position(x: geometry.size.width / 2, y: geometry.size.height / 2)
                 }
             }
         }
+        
+        .onChange(of: level) { _ in
+            if level {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
+                    coordinator.navigate(to: .main)
+                }
+            }
+        }
+        
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                loadingAnimation()
+            }
+        }
+        
     }
+    
+    func loadingAnimation() {
+        withAnimation(Animation.easeInOut(duration: 1).repeatForever(autoreverses: true)) {
+            loadingOpacity = 1
+        }
+    }
+    
 }
 
 #Preview {

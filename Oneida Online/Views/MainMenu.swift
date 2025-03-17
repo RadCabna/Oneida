@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct MainMenu: View {
+    @EnvironmentObject var coordinator: Coordinator
     @AppStorage("coinCount") var coinCount = 0
     @State private var showSettings = false
     @State private var showShop = false
@@ -35,6 +36,9 @@ struct MainMenu: View {
             .padding()
             VStack {
                     Buttons(size: 0.06, text: "START")
+                    .onTapGesture {
+                        coordinator.navigate(to: .game)
+                    }
                 HStack {
                     Buttons(size: 0.06, text: "SETTINGS")
                         .onTapGesture {
