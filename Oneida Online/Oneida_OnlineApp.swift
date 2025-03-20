@@ -71,7 +71,7 @@ class AppDelegate: NSObject, URLSessionDelegate {
                     }
 
                     if let finalURL = httpResponse.url?.absoluteString {
-                        print("Final URL after redirects: \(finalURL)")
+                        print("Final URL  after redirects: \(finalURL)")
 
                         
                         if !finalURL.contains("https://www.google.com/") {
