@@ -41,7 +41,7 @@
 		DDA0C0B82D80B7E600334F50 /* Shop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shop.swift; sourceTree = "<group>"; };
 		DDA0C0BA2D80BB8A00334F50 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DDD616332D8718A1002723AA /* VisitorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
-		DDDEF7532D806F1200292000 /* Oneida Online.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oneida Online.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DDDEF7532D806F1200292000 /* Oneida Hospitality.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Oneida Hospitality.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDDEF7562D806F1200292000 /* Oneida_OnlineApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Oneida_OnlineApp.swift; sourceTree = "<group>"; };
 		DDDEF75A2D806F1300292000 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDDEF75C2D806F1300292000 /* Oneida_Online.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Oneida_Online.entitlements; sourceTree = "<group>"; };
@@ -89,7 +89,7 @@
 		DDDEF7542D806F1200292000 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DDDEF7532D806F1200292000 /* Oneida Online.app */,
+				DDDEF7532D806F1200292000 /* Oneida Hospitality.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -210,7 +210,7 @@
 			);
 			name = "Oneida Online";
 			productName = "Oneida Online";
-			productReference = DDDEF7532D806F1200292000 /* Oneida Online.app */;
+			productReference = DDDEF7532D806F1200292000 /* Oneida Hospitality.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -436,8 +436,8 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.oneidoinline.games;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hospiky.ter;
+				PRODUCT_NAME = "Oneida Hospitality";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -476,8 +476,8 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 14.5;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.oneidoinline.games;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.hospiky.ter;
+				PRODUCT_NAME = "Oneida Hospitality";
 				SDKROOT = auto;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

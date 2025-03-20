@@ -15,8 +15,8 @@ workflows:
         vars:
           XCODE_PROJECT: "Oneida Online.xcodeproj" # <-- Put the name of your workspace here.
           XCODE_SCHEME: "Oneida Online" # <-- Put the name of your scheme here.
-          BUNDLE_ID: "com.oneidoinline.games" # <-- Put your Bundle Id here.
-          APP_STORE_APPLE_ID: 6743410172 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+          BUNDLE_ID: "com.hospiky.ter" # <-- Put your Bundle Id here.
+          APP_STORE_APPLE_ID: 6743438303 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
         xcode: latest # <-- set to specific version e.g. 14.3, 15.0 to avoid unexpected updates.
         cocoapods: default
       triggering:
